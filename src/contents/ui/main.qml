@@ -65,6 +65,9 @@ Kirigami.ApplicationWindow {
                     flat: true
                     icon.name: "edit-delete"
                     visible: containsMouse ? true : false
+                    onClicked: {
+                        fileModel.remove(index)
+                    }
                 }
             }
         }
