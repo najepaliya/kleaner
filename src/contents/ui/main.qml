@@ -29,11 +29,11 @@ Kirigami.ApplicationWindow {
     }
 
     pageStack.initialPage: Kirigami.ScrollablePage {
-        title: i18n("Input")
+        title: i18n("Files")
 
         actions.main: Kirigami.Action {
             icon.name: "list-add"
-            text: i18n("Add Files")
+            text: i18n("Add")
             onTriggered: {
                 fileDialog.open()
             }
@@ -66,15 +66,43 @@ Kirigami.ApplicationWindow {
                     icon.name: "edit-delete"
                     visible: containsMouse ? true : false
                     onClicked: {
+                        var file = fileModel.get(index)
+                        removalMessage.text = "Removed " + file.name
                         fileModel.remove(index)
+                        removalMessage.visible = true
                     }
                 }
             }
         }
 
-        ListView {
-            delegate: fileDelegate
-            model: fileModel
+        ColumnLayout {
+            anchors.fill: parent
+            spacing: 20
+
+            Kirigami.InlineMessage {
+                id: removalMessage
+                Layout.fillWidth: true
+                showCloseButton: true
+                visible: false
+                type: Kirigami.MessageType.Warning
+                actions: [
+                    Kirigami.Action {
+                        icon.name: "edit-undo"
+                        text: i18n("Undo")
+                        onTriggered: {
+                            fileModel.append({"name": removalMessage.text.slice(8)})
+                            removalMessage.visible = false
+                        }
+                    }
+                ]
+            }
+
+            ListView {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                delegate: fileDelegate
+                model: fileModel
+            }
         }
     }
 }
