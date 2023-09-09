@@ -7,6 +7,10 @@ import QtQuick.Dialogs 1.0
 Kirigami.ApplicationWindow {
     title: "Kleaner"
 
+    ListModel {
+        id: fileModel
+    }
+
     FileDialog {
         id: fileDialog
         title: "Please choose your file(s)"
@@ -14,8 +18,8 @@ Kirigami.ApplicationWindow {
         // selectFolder: true
         selectMultiple: true
         onAccepted: {
-            console.log("You chose: " + fileDialog.fileUrls)
-            Qt.quit()
+            for (var i = 0; i < fileUrls.length; i++)
+                fileModel.append({name: fileUrls[i].slice(7)})
         }
         // onRejected: {
         //     console.log("Canceled")
@@ -26,12 +30,48 @@ Kirigami.ApplicationWindow {
 
     pageStack.initialPage: Kirigami.ScrollablePage {
         title: i18n("Input")
+
         actions.main: Kirigami.Action {
             icon.name: "list-add"
             text: i18n("Add Files")
             onTriggered: {
                 fileDialog.open()
             }
+        }
+
+        Component {
+            id: fileDelegate
+            
+            // Controls.ItemDelegate {
+            //     // text: model.name
+            //     height: 24
+            //     width: ListView.view.width
+            //     onClicked: console.log("clicked:", modelData)
+
+            //     Controls.Label {
+            //         Layout.fillWidth: true
+            //         text: model.name
+            //     }
+            // }
+
+            Kirigami.BasicListItem {
+                
+                Controls.Label {
+                    Layout.fillWidth: true
+                    text: model.name
+                }
+
+                Controls.Button {
+                    flat: true
+                    icon.name: "edit-delete"
+                    visible: containsMouse ? true : false
+                }
+            }
+        }
+
+        ListView {
+            delegate: fileDelegate
+            model: fileModel
         }
     }
 }
