@@ -1,5 +1,5 @@
 {
-    "id": "com.github.najepaliya.kmetadataeditor",
+    "id": "com.github.najepaliya.kleaner",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.15-22.08",
     "sdk": "org.kde.Sdk",
@@ -12,7 +12,7 @@
     ],
     "modules": [
         {
-            "name": "kmetadataeditor",
+            "name": "kleaner",
             "buildsystem": "cmake",
             "builddir": true,
             "sources": [

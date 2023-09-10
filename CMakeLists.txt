@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(helloworld)
+project(kleaner)
 
 set(KF_MIN_VERSION "5.68.0")
 set(QT_MIN_VERSION "5.12.0")
