@@ -6,6 +6,8 @@ import QtQuick.Dialogs 1.0
 
 Kirigami.ApplicationWindow {
     title: "Kleaner"
+    height: 800
+    width: 500
 
     ListModel {
         id: fileModel
@@ -28,75 +30,5 @@ Kirigami.ApplicationWindow {
         Component.onCompleted: visible = false
     }
 
-    pageStack.initialPage: Kirigami.ScrollablePage {
-        title: i18n("Files")
-
-        actions.main: Kirigami.Action {
-            icon.name: "list-add"
-            text: i18n("Add")
-            onTriggered: {
-                fileDialog.open()
-            }
-        }
-
-        Component {
-            id: fileDelegate
-
-            Kirigami.BasicListItem {
-                
-                Controls.Label {
-                    Layout.fillWidth: true
-                    text: model.name
-                }
-
-                Controls.Button {
-                    id: undoButton
-                    flat: true
-                    icon.name: "edit-delete"
-                    visible: containsMouse ? true : false
-                    onClicked: {
-                        var file = fileModel.get(index)
-                        removalMessage.text = "Removed " + file.name
-                        removalMessage.removedIndex = index
-                        fileModel.remove(index)
-                        removalMessage.visible = true
-                    }
-                }
-            }
-        }
-
-        ColumnLayout {
-            anchors.fill: parent
-            spacing: 20
-
-            Kirigami.InlineMessage {
-                id: removalMessage
-                Layout.fillWidth: true
-                showCloseButton: true
-                visible: false
-                type: Kirigami.MessageType.Warning
-                property int removedIndex
-                actions: [
-                    Kirigami.Action {
-                        icon.name: "edit-undo"
-                        text: i18n("Undo")
-                        onTriggered: {
-                            fileModel.insert(removalMessage.removedIndex, {"name": removalMessage.text.slice(8)})
-                            removalMessage.visible = false
-                        }
-                    }
-                ]
-            }
-
-            ListView {
-                id: fileView
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                clip: true
-                delegate: fileDelegate
-                model: fileModel
-                // property int removedIndex: 0
-            }
-        }
-    }
+    pageStack.initialPage: InitialPage {}
 }
