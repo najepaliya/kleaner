@@ -9,26 +9,5 @@ Kirigami.ApplicationWindow {
     height: 800
     width: 500
 
-    ListModel {
-        id: fileModel
-    }
-
-    FileDialog {
-        id: fileDialog
-        title: "Please choose your file(s)"
-        folder: shortcuts.home
-        // selectFolder: true
-        selectMultiple: true
-        onAccepted: {
-            for (var i = 0; i < fileUrls.length; i++)
-                fileModel.append({name: fileUrls[i].slice(7)})
-        }
-        // onRejected: {
-        //     console.log("Canceled")
-        //     Qt.quit()
-        // }
-        Component.onCompleted: visible = false
-    }
-
     pageStack.initialPage: InitialPage {}
 }

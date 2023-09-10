@@ -4,8 +4,30 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.20 as Kirigami
 import QtQuick.Dialogs 1.0
 
+
 Kirigami.ScrollablePage {
     title: i18n("Files")
+
+    ListModel {
+        id: fileModel
+    }
+
+    FileDialog {
+        id: fileDialog
+        title: "Please choose your file(s)"
+        folder: shortcuts.home
+        // selectFolder: true
+        selectMultiple: true
+        onAccepted: {
+            for (var i = 0; i < fileUrls.length; i++)
+                fileModel.append({name: fileUrls[i].slice(7)})
+        }
+        // onRejected: {
+        //     console.log("Canceled")
+        //     Qt.quit()
+        // }
+        Component.onCompleted: visible = false
+    }
 
     actions.main: Kirigami.Action {
         icon.name: "list-add"
