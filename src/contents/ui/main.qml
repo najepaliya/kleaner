@@ -50,12 +50,14 @@ Kirigami.ApplicationWindow {
                 }
 
                 Controls.Button {
+                    id: undoButton
                     flat: true
                     icon.name: "edit-delete"
                     visible: containsMouse ? true : false
                     onClicked: {
                         var file = fileModel.get(index)
                         removalMessage.text = "Removed " + file.name
+                        removalMessage.removedIndex = index
                         fileModel.remove(index)
                         removalMessage.visible = true
                     }
@@ -73,12 +75,13 @@ Kirigami.ApplicationWindow {
                 showCloseButton: true
                 visible: false
                 type: Kirigami.MessageType.Warning
+                property int removedIndex
                 actions: [
                     Kirigami.Action {
                         icon.name: "edit-undo"
                         text: i18n("Undo")
                         onTriggered: {
-                            fileModel.append({"name": removalMessage.text.slice(8)})
+                            fileModel.insert(removalMessage.removedIndex, {"name": removalMessage.text.slice(8)})
                             removalMessage.visible = false
                         }
                     }
@@ -86,10 +89,13 @@ Kirigami.ApplicationWindow {
             }
 
             ListView {
+                id: fileView
                 Layout.fillHeight: true
                 Layout.fillWidth: true
+                clip: true
                 delegate: fileDelegate
                 model: fileModel
+                // property int removedIndex: 0
             }
         }
     }
