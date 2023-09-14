@@ -37,6 +37,15 @@ Kirigami.ScrollablePage {
         }
     }
 
+    actions.right: Kirigami.Action {
+        icon.name: "go-next"
+        text: i18n("Next")
+        onTriggered: {
+            console.log("hello")
+        }
+        visible: fileModel.count > 0 ? true : false
+    }
+
     Component {
         id: fileDelegate
 
