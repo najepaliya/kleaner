@@ -9,5 +9,5 @@ Kirigami.ApplicationWindow {
     height: 800
     width: 500
 
-    pageStack.initialPage: InitialPage {}
+    pageStack.initialPage: FilesPage {}
 }

@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file alias="main.qml">contents/ui/main.qml</file>
-        <file alias="InitialPage.qml">contents/ui/InitialPage.qml</file>
+        <file alias="FilesPage.qml">contents/ui/FilesPage.qml</file>
     </qresource>
 </RCC>
