@@ -12,51 +12,46 @@ Kirigami.ScrollablePage {
         id: fileModel
     }
 
+    // look into multiple selection w/ folders and sanitize input rather than static slicing
     FileDialog {
         id: fileDialog
         title: "Please choose your file(s)"
         folder: shortcuts.home
-        // selectFolder: true
         selectMultiple: true
         onAccepted: {
             for (var i = 0; i < fileUrls.length; i++)
                 fileModel.append({name: fileUrls[i].slice(7)})
         }
-        // onRejected: {
-        //     console.log("Canceled")
-        //     Qt.quit()
-        // }
         Component.onCompleted: visible = false
     }
 
     actions.main: Kirigami.Action {
         icon.name: "list-add"
-        text: i18n("Add")
+        tooltip: "Add files"
         onTriggered: {
             fileDialog.open()
         }
     }
 
-    actions.right: Kirigami.Action {
-        icon.name: "go-next"
-        text: i18n("Next")
-        onTriggered: {
-            console.log("hello")
-        }
-        visible: fileModel.count > 0 ? true : false
-    }
+    // undo function may not be necessary
+    // function undo() {
+    //             console.log("abc")
+    //             // fileModel.insert(file.index, {"name": file.name})
+    //         } 
 
     Component {
         id: fileDelegate
 
         Kirigami.BasicListItem {
-            
+            activeBackgroundColor: "lightblue"
             Controls.Label {
                 Layout.fillWidth: true
                 elide: Text.ElideLeft
                 text: model.name
             }
+            
 
+            // maybe i do not need undo
             Controls.Button {
                 id: undoButton
                 flat: true
@@ -64,10 +59,12 @@ Kirigami.ScrollablePage {
                 visible: containsMouse ? true : false
                 onClicked: {
                     var file = fileModel.get(index)
-                    removalMessage.text = "Removed " + file.name
-                    removalMessage.removedIndex = index
+                    // applicationWindow().showPassiveNotification("Removed " + file.name, 4000, "Undo", undo(fileModel.get(index)))
+                    // removalMessage.text = "Removed " + file.name
+                    // removalMessage.removedIndex = index
+                    applicationWindow().showPassiveNotification("Removed " + file.name, 1000)
                     fileModel.remove(index)
-                    removalMessage.visible = true
+                    // removalMessage.visible = true
                 }
             }
         }
@@ -75,29 +72,11 @@ Kirigami.ScrollablePage {
 
     ColumnLayout {
         anchors.fill: parent
-        spacing: 20
-
-        Kirigami.InlineMessage {
-            id: removalMessage
-            Layout.fillWidth: true
-            showCloseButton: true
-            visible: false
-            type: Kirigami.MessageType.Warning
-            property int removedIndex
-            actions: [
-                Kirigami.Action {
-                    icon.name: "edit-undo"
-                    text: i18n("Undo")
-                    onTriggered: {
-                        fileModel.insert(removalMessage.removedIndex, {"name": removalMessage.text.slice(8)})
-                        removalMessage.visible = false
-                    }
-                }
-            ]
-        }
 
         ListView {
             id: fileView
+            // height: parent.height
+            // width: parent.width
             Layout.fillHeight: true
             Layout.fillWidth: true
             delegate: fileDelegate
