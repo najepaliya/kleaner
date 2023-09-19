@@ -10,11 +10,11 @@ Kirigami.ApplicationWindow {
     height: 450 
     width: 800
 
-    FilesPage {
+    FilePage {
         id: abc
     }
 
-    TemplatesPage {
+    TemplatePage {
         id: xyz
     }
 
