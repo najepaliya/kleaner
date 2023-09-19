@@ -7,20 +7,25 @@ import QtQuick.Dialogs 1.0
 Kirigami.ApplicationWindow {
     title: "Kleaner"
     // may need to be user configurable or detect and set sizes using some method
-    height: 450 
-    width: 800
+    height: 800 
+    width: 450
 
     FilePage {
         id: abc
     }
 
     TemplatePage {
-        id: xyz
+        id: def
+    }
+
+    StagingPage {
+        id: ghi
     }
 
     // may need to be conditional depending on desktop or mobile
     Component.onCompleted: {
-        pageStack.push([abc,xyz])
+        pageStack.push([abc,def,ghi])
+        pageStack.goBack()
         pageStack.goBack()
     }
 }
