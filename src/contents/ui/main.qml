@@ -14,13 +14,14 @@ Kirigami.ApplicationWindow {
         id: filePage
     }
 
+    TemplatePage {
+        id: templatePage
+    }
+
     StagingPage {
         id: stagingPage
         fileCount: filePage.count
-    }
-
-    TemplatePage {
-        id: templatePage
+        template: templatePage.template
     }
 
     // may need to be conditional depending on desktop or mobile

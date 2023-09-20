@@ -6,6 +6,8 @@ import QtQuick.Dialogs 1.0
 
 Kirigami.ScrollablePage {
     title: i18n("Templates")
+
+    property alias template: templateView.selection
     
     actions.main: Kirigami.Action {
         icon.name: "list-add"
@@ -22,7 +24,7 @@ Kirigami.ScrollablePage {
 
         ListElement {
             name: "Delete everything"
-            checked: false
+            checked: true
         }
 
         ListElement {
@@ -41,6 +43,7 @@ Kirigami.ScrollablePage {
         Kirigami.BasicListItem {
             activeBackgroundColor: "lightblue"
             Controls.RadioButton {
+                id: radioButton
                 Layout.fillWidth: true
                 text: model.name
                 checked: model.checked
@@ -78,7 +81,7 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
             model: templateModel
             delegate: templateDelegate
-            currentIndex: -1
+            property string selection: templateModel.get(templateView.currentIndex).name 
         }
     }
 }
