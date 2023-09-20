@@ -22,7 +22,7 @@ Kirigami.ScrollablePage {
 
         ListElement {
             name: "Delete everything"
-            checked: true
+            checked: false
         }
 
         ListElement {
@@ -78,6 +78,7 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
             model: templateModel
             delegate: templateDelegate
+            currentIndex: -1
         }
     }
 }

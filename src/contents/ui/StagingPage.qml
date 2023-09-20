@@ -6,4 +6,13 @@ import QtQuick.Dialogs 1.0
 
 Kirigami.ScrollablePage {
     title: i18n("Staging")
+    property int fileCount: 0
+
+    Column {
+        Controls.Label {
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: i18n(fileCount + " files")
+            font.pixelSize: 64
+        }
+    }
 }

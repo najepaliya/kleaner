@@ -11,20 +11,21 @@ Kirigami.ApplicationWindow {
     width: 450
 
     FilePage {
-        id: abc
-    }
-
-    TemplatePage {
-        id: def
+        id: filePage
     }
 
     StagingPage {
-        id: ghi
+        id: stagingPage
+        fileCount: filePage.count
+    }
+
+    TemplatePage {
+        id: templatePage
     }
 
     // may need to be conditional depending on desktop or mobile
     Component.onCompleted: {
-        pageStack.push([abc,def,ghi])
+        pageStack.push([filePage,templatePage,stagingPage])
         pageStack.goBack()
         pageStack.goBack()
     }
