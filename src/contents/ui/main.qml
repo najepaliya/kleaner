@@ -20,8 +20,8 @@ Kirigami.ApplicationWindow {
 
     StagingPage {
         id: stagingPage
-        fileCount: filePage.count
-        template: templatePage.template
+        fileCount: filePage.fileCount
+        selectedTemplate: templatePage.selectedTemplate
     }
 
     // may need to be conditional depending on desktop or mobile

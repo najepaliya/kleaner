@@ -7,21 +7,21 @@ import QtQuick.Dialogs 1.0
 Kirigami.ScrollablePage {
     title: i18n("Files")
 
-    property alias count: list.count
+    property alias fileCount: fileView.count
 
     ListModel {
-        id: model
+        id: fileModel
     }
 
     // look into multiple selection w/ folders and sanitize input rather than static slicing
     FileDialog {
-        id: dialog
+        id: fileDialog
         title: "Please choose your file(s)"
         folder: shortcuts.home
         selectMultiple: true
         onAccepted: {
             for (var i = 0; i < fileUrls.length; i++)
-                model.append({name: fileUrls[i].slice(7)})
+                fileModel.append({name: fileUrls[i].slice(7)})
         }
         Component.onCompleted: visible = false
     }
@@ -30,15 +30,16 @@ Kirigami.ScrollablePage {
         icon.name: "list-add"
         tooltip: "Add files"
         onTriggered: {
-            dialog.open()
+            fileDialog.open()
         }
     }
 
     Component {
-        id: delegate
+        id: fileDelegate
 
         Kirigami.BasicListItem {
             activeBackgroundColor: "lightblue"
+
             Controls.Label {
                 Layout.fillWidth: true
                 elide: Text.ElideLeft
@@ -50,9 +51,9 @@ Kirigami.ScrollablePage {
                 icon.name: "edit-delete"
                 visible: containsMouse ? true : false
                 onClicked: {
-                    var file = model.get(index)
+                    var file = fileModel.get(index)
                     applicationWindow().showPassiveNotification("Removed " + file.name, 1000)
-                    model.remove(index)
+                    fileModel.remove(index)
                 }
             }
         }
@@ -62,11 +63,11 @@ Kirigami.ScrollablePage {
         anchors.fill: parent
 
         ListView {
-            id: list
+            id: fileView
             Layout.fillHeight: true
             Layout.fillWidth: true
-            delegate: delegate
-            model: model
+            delegate: fileDelegate
+            model: fileModel
         }
     }
 }

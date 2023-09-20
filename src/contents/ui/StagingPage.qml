@@ -8,7 +8,7 @@ Kirigami.ScrollablePage {
     title: i18n("Staging")
     
     property int fileCount: 0
-    property string template: "N/A"
+    property string selectedTemplate: "N/A"
 
     Column {
         anchors.fill: parent
@@ -32,9 +32,8 @@ Kirigami.ScrollablePage {
 
         Controls.Label {
             width: parent.width
-            // Layout.fillWidth: true
             anchors.horizontalCenter: parent.horizontalCenter
-            text: template
+            text: selectedTemplate
             font.pixelSize: 64
             wrapMode: Text.WordWrap
         }

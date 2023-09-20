@@ -7,7 +7,7 @@ import QtQuick.Dialogs 1.0
 Kirigami.ScrollablePage {
     title: i18n("Templates")
 
-    property alias template: templateView.selection
+    property alias selectedTemplate: templateView.selected
     
     actions.main: Kirigami.Action {
         icon.name: "list-add"
@@ -17,7 +17,9 @@ Kirigami.ScrollablePage {
         }
     }
 
-    Controls.ButtonGroup { id: templateRadioGroup }
+    Controls.ButtonGroup {
+        id: radioGroup
+    }
 
     ListModel {
         id: templateModel
@@ -42,22 +44,25 @@ Kirigami.ScrollablePage {
         id: templateDelegate
         Kirigami.BasicListItem {
             activeBackgroundColor: "lightblue"
+            
             Controls.RadioButton {
                 id: radioButton
                 Layout.fillWidth: true
                 text: model.name
                 checked: model.checked
-                Controls.ButtonGroup.group: templateRadioGroup
+                Controls.ButtonGroup.group: radioGroup
                 onClicked: {
                     templateView.currentIndex = index
                 }
             }
+
             Controls.Button {
                 flat: true
                 icon.name: "document-edit"
                 visible: containsMouse ? true : false
                 enabled: model.index != 0 ? true : false
             }
+
             Controls.Button {
                 flat: true
                 icon.name: "edit-delete"
@@ -81,7 +86,7 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
             model: templateModel
             delegate: templateDelegate
-            property string selection: templateModel.get(templateView.currentIndex).name 
+            property string selected: templateModel.get(templateView.currentIndex).name 
         }
     }
 }
