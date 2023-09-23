@@ -8,7 +8,7 @@ Kirigami.ScrollablePage {
     title: i18n("Staging")
     
     property int fileCount: 0
-    property string selectedTemplate: "N/A"
+    property string selectedTemplate
 
     Column {
         anchors.fill: parent
