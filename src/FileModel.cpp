@@ -2,7 +2,7 @@
 
 FileModel::FileModel (QObject* parent) : QAbstractListModel (parent)
 {
-    list = QColor::colorNames();
+    // list = QColor::colorNames();
 }
 
 int FileModel::rowCount (const QModelIndex& parent) const
@@ -31,3 +31,27 @@ QVariant FileModel::data (const QModelIndex& index, int role) const
 //     mapping[Qt::DisplayRole] = "display";
 //     return mapping;
 // }
+
+QString FileModel::removeFile (int index)
+{
+    beginRemoveRows (QModelIndex(), index, index);
+    QString filename = list.takeAt(index);
+    endRemoveRows ();
+    return filename;
+}
+
+void FileModel::insertFiles (QList<QUrl> urls)
+{
+
+    beginResetModel ();
+    for (int i = 0; i < urls.size(); i++)
+    {
+        QString filename = urls[i].fileName();
+        if (!list.contains(filename))
+        {
+            list.append(filename);
+        }
+    }
+    list.sort ();
+    endResetModel ();
+}

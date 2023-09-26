@@ -10,10 +10,6 @@ Kirigami.ScrollablePage {
 
     property alias fileCount: fileView.count
 
-    // ListModel {
-    //     id: fileModel
-    // }
-
     // look into multiple selection w/ folders and sanitize input rather than static slicing
     FileDialog {
         id: fileDialog
@@ -21,10 +17,7 @@ Kirigami.ScrollablePage {
         folder: shortcuts.home
         selectMultiple: true
         onAccepted: {
-            for (var i = 0; i < fileUrls.length; i++)
-                fileModel.append({name: fileUrls[i].slice(7)})
-            // Kleaner.setModel(fileUrls)
-            // Kleaner.test(fileUrls)
+            FileModel.insertFiles (fileUrls)
         }
         Component.onCompleted: visible = false
     }
@@ -41,15 +34,12 @@ Kirigami.ScrollablePage {
         id: fileDelegate
 
         Kirigami.BasicListItem {
-            // required property string display
-            // required property int index
             activeBackgroundColor: "lightblue"
 
             Controls.Label {
                 Layout.fillWidth: true
                 elide: Text.ElideLeft
                 text: display
-                // text: modelData
             }
             
             Controls.Button {
@@ -57,9 +47,8 @@ Kirigami.ScrollablePage {
                 icon.name: "edit-delete"
                 visible: containsMouse ? true : false
                 onClicked: {
-                    var file = fileModel.get(index)
-                    applicationWindow().showPassiveNotification("Removed " + file.name, 1000)
-                    fileModel.remove(index)
+                    var filename = FileModel.removeFile(index)
+                    applicationWindow().showPassiveNotification("Removed " + filename, 1000)
                 }
             }
         }
