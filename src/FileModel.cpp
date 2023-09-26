@@ -46,7 +46,7 @@ void FileModel::insertFiles (QList<QUrl> urls)
     beginResetModel ();
     for (int i = 0; i < urls.size(); i++)
     {
-        QString filename = urls[i].fileName();
+        QString filename = urls[i].toLocalFile();
         if (!list.contains(filename))
         {
             list.append(filename);
