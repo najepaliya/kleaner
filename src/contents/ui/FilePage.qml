@@ -6,13 +6,13 @@ import QtQuick.Dialogs 1.0
 import com.github.najepaliya.kleaner 1.0
 
 Kirigami.ScrollablePage {
-    title: i18n(Kleaner.introductionText)
+    title: i18n("Files")
 
     property alias fileCount: fileView.count
 
-    ListModel {
-        id: fileModel
-    }
+    // ListModel {
+    //     id: fileModel
+    // }
 
     // look into multiple selection w/ folders and sanitize input rather than static slicing
     FileDialog {
@@ -23,6 +23,8 @@ Kirigami.ScrollablePage {
         onAccepted: {
             for (var i = 0; i < fileUrls.length; i++)
                 fileModel.append({name: fileUrls[i].slice(7)})
+            // Kleaner.setModel(fileUrls)
+            // Kleaner.test(fileUrls)
         }
         Component.onCompleted: visible = false
     }
@@ -39,12 +41,15 @@ Kirigami.ScrollablePage {
         id: fileDelegate
 
         Kirigami.BasicListItem {
+            // required property string display
+            // required property int index
             activeBackgroundColor: "lightblue"
 
             Controls.Label {
                 Layout.fillWidth: true
                 elide: Text.ElideLeft
-                text: model.name
+                text: display
+                // text: modelData
             }
             
             Controls.Button {
@@ -68,7 +73,7 @@ Kirigami.ScrollablePage {
             Layout.fillHeight: true
             Layout.fillWidth: true
             delegate: fileDelegate
-            model: fileModel
+            model: FileModel
         }
     }
 }
