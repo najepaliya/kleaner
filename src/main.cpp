@@ -4,7 +4,7 @@
 #include <QUrl>
 #include <KLocalizedContext>
 #include <KLocalizedString>
-#include "file_model.hpp"
+#include "FileModel.hpp"
 // #include <kleaner.hpp>
 
 int main(int argc, char *argv[])

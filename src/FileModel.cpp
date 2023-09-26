@@ -1,4 +1,4 @@
-#include "file_model.hpp"
+#include "FileModel.hpp"
 
 FileModel::FileModel (QObject* parent) : QAbstractListModel (parent)
 {
