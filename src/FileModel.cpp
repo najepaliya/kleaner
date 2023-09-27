@@ -42,7 +42,6 @@ QString FileModel::removeFile (int index)
 
 void FileModel::insertFiles (QList<QUrl> urls)
 {
-
     beginResetModel ();
     for (int i = 0; i < urls.size(); i++)
     {
