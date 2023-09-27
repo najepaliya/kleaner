@@ -4,8 +4,8 @@
 #include <QUrl>
 #include <KLocalizedContext>
 #include <KLocalizedString>
-#include "FileModel.hpp"
-// #include <kleaner.hpp>
+// #include "FileModel.hpp"
+#include <Kleaner.hpp>
 
 int main(int argc, char *argv[])
 {
@@ -17,8 +17,9 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName(QStringLiteral("Kleaner"));
 
     QQmlApplicationEngine engine;
-    FileModel fileModel;
-    qmlRegisterSingletonInstance<FileModel>("com.github.najepaliya.kleaner", 1, 0, "FileModel", &fileModel);
+
+    Kleaner kleaner;
+    qmlRegisterSingletonInstance<Kleaner>("com.github.najepaliya.kleaner", 1, 0, "Kleaner", &kleaner);
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

@@ -19,7 +19,7 @@ Kirigami.Page {
             ListView {
                 anchors.fill: parent
                 clip: true
-                model: FileModel
+                model: Kleaner.fileModel
                 delegate: Kirigami.BasicListItem {
                     activeBackgroundColor: "lightblue"
                     
@@ -33,7 +33,7 @@ Kirigami.Page {
                         icon.name: "edit-delete"
                         flat: true
                         onClicked: {
-                            var filename = FileModel.removeFile(index)
+                            var filename = Kleaner.fileModel.removeFile(index)
                             applicationWindow().showPassiveNotification("Removed " + filename, 1000)
                         }
                     }
@@ -46,7 +46,7 @@ Kirigami.Page {
                         folder: shortcuts.home
                         selectMultiple: true
                         onAccepted: {
-                            FileModel.insertFiles (fileUrls)
+                            Kleaner.fileModel.insertFiles (fileUrls)
                         }
                         Component.onCompleted: visible = false
                     }
