@@ -1,9 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file alias="main.qml">contents/ui/main.qml</file>
-        <!-- <file alias="FilePage.qml">contents/ui/FilePage.qml</file> -->
-        <!-- <file alias="TemplatePage.qml">contents/ui/TemplatePage.qml</file> -->
-        <!-- <file alias="StagingPage.qml">contents/ui/StagingPage.qml</file> -->
         <file alias="HomePage.qml">contents/ui/HomePage.qml</file>
     </qresource>
 </RCC>
