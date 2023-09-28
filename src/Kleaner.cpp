@@ -16,11 +16,11 @@ FileModel* Kleaner::fileModel() const
     return m_fileModel;
 }
 
-void Kleaner::processFiles()
+QString Kleaner::processFiles()
 {
     QStringList files = m_fileModel->getList();
     KExiv2Iface::KExiv2 cleaner;
-    QVector<int> indexes;
+    int successful = 0;
     for (int i = 0; i < files.size(); i++)
     {
         if (cleaner.load(files[i]))
@@ -32,16 +32,12 @@ void Kleaner::processFiles()
             {
                 if (cleaner.applyChanges())
                 {
-                    indexes.append(i);
+                    successful++;
                 }
             }
         }
     }
-    qDebug() << indexes.size();
-    int decrement = 0;
-    for (int i = 0; i < indexes.size(); i++)
-    {
-        m_fileModel->removeFile(indexes[i] - decrement);
-        decrement++;
-    }
+    QString result = QString::number(files.size()) + " files processed: " + QString::number(successful) + " successful and " + QString::number(files.size() - successful) + " failed";
+    m_fileModel->removeFile(0, files.size());
+    return result;
 }

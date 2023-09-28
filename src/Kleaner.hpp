@@ -16,7 +16,7 @@ class Kleaner : public QObject
         FileModel* fileModel() const;
         Q_SIGNAL void fileModelChanged();
 
-        Q_INVOKABLE void processFiles();
+        Q_INVOKABLE QString processFiles();
 
     private:
         FileModel* m_fileModel;

@@ -24,12 +24,10 @@ QVariant FileModel::data (const QModelIndex& index, int role) const
     return result;
 }
 
-QString FileModel::removeFile (int index)
+void FileModel::removeFile (int first, int last)
 {
-    beginRemoveRows (QModelIndex(), index, index);
-    QString filename = list.takeAt(index);
+    beginRemoveRows (QModelIndex(), first, last);
     endRemoveRows ();
-    return filename;
 }
 
 void FileModel::insertFiles (QList<QUrl> urls)

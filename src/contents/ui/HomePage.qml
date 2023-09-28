@@ -10,20 +10,35 @@ Kirigami.Page {
 
     actions.main: Kirigami.Action {
         displayComponent: Controls.Button {
-            icon.name: "go-next"
-            icon.color: fileView.count > 0 ? "green" : "red"
+            icon.name: "media-playback-start"
+            enabled: fileView.count > 0 ? true : false
             flat: true
             onClicked: {
-                Kleaner.processFiles()
+                var result = Kleaner.processFiles()
+                resultMessage.text = result
+                resultMessage.visible = true
             }
         }
-        // tooltip: "hello world"
-        // enabled: fileView.count > 0 ? true : false
     }
 
     ColumnLayout {
         anchors.fill: parent
         spacing: 20
+
+        Kirigami.InlineMessage {
+            id: resultMessage
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Positive
+            text: ""
+            visible: false
+        }
+
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Warning
+            text: "Custom user templates are a work in progress. The default template removes all EXIF, IPTC, XMP and Comments metadata."
+            visible: true
+        }
 
         Controls.GroupBox {
             Layout.fillHeight: true
@@ -47,8 +62,7 @@ Kirigami.Page {
                         icon.name: "edit-delete"
                         flat: true
                         onClicked: {
-                            var filename = Kleaner.fileModel.removeFile(index)
-                            applicationWindow().showPassiveNotification("Removed " + filename, 1000)
+                            Kleaner.fileModel.removeFile(index, index)
                         }
                     }
                 }
@@ -88,6 +102,13 @@ Kirigami.Page {
                     }
                 }
                 headerPositioning: ListView.OverlayHeader
+
+                Kirigami.PlaceholderMessage {
+                    anchors.centerIn: parent
+                    width: parent.width - Kirigami.Units.largeSpacing * 4
+                    visible: fileView.count == 0
+                    text: "Select files to continue"
+                }
             }
         }
 
@@ -104,11 +125,6 @@ Kirigami.Page {
                     ListElement {
                         name: "Remove all metadata"
                         checked: true
-                    }
-
-                    ListElement {
-                        name: "Custom user template"
-                        checked: false
                     }
                 }
 
