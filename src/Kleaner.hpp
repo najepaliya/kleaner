@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <KExiv2/KExiv2>
 #include "FileModel.hpp"
 
 class Kleaner : public QObject
@@ -16,8 +17,14 @@ class Kleaner : public QObject
         FileModel* fileModel() const;
         Q_SIGNAL void fileModelChanged();
 
-        Q_INVOKABLE QString processFiles();
+        Q_INVOKABLE QString processFiles (int index);
+        
+        int clearExif();
+        int clearIptc();
+        int clearXmp();
+        int clearComments();
 
     private:
         FileModel* m_fileModel;
+        KExiv2Iface::KExiv2 cleaner;
 };

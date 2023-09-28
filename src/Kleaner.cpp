@@ -1,5 +1,4 @@
 #include "Kleaner.hpp"
-#include <KExiv2/KExiv2>
 
 Kleaner::Kleaner (QObject* parent) : QObject (parent)
 {
@@ -16,28 +15,73 @@ FileModel* Kleaner::fileModel() const
     return m_fileModel;
 }
 
-QString Kleaner::processFiles()
+int Kleaner::clearExif()
+{
+    int result = 0;
+    if (cleaner.hasExif() && cleaner.clearExif() && cleaner.applyChanges())
+    {
+        result = 1;
+    }
+    return result;
+}
+
+int Kleaner::clearIptc()
+{
+    int result = 0;
+    if (cleaner.hasIptc() && cleaner.clearIptc() && cleaner.applyChanges())
+    {
+        result = 1;
+    }
+    return result;
+}
+
+int Kleaner::clearXmp()
+{
+    int result = 0;
+    if (cleaner.hasXmp() && cleaner.clearXmp() && cleaner.applyChanges())
+    {
+        result = 1;
+    }
+    return result;
+}
+
+int Kleaner::clearComments()
+{
+    int result = 0;
+    if (cleaner.hasComments() && cleaner.clearComments() && cleaner.applyChanges())
+    {
+        result = 1;
+    }
+    return result;
+}
+
+QString Kleaner::processFiles (int index)
 {
     QStringList files = m_fileModel->getList();
-    KExiv2Iface::KExiv2 cleaner;
     int successful = 0;
+
     for (int i = 0; i < files.size(); i++)
     {
         if (cleaner.load(files[i]))
         {
-            if ((cleaner.hasExif() && cleaner.clearExif())
-            || (cleaner.hasIptc() && cleaner.clearIptc())
-            || (cleaner.hasXmp() && cleaner.clearXmp())
-            || (cleaner.hasComments() && cleaner.clearComments()))
+            switch (index)
             {
-                if (cleaner.applyChanges())
-                {
-                    successful++;
-                }
+                case 0:
+                    successful += clearExif();
+                    break;
+                case 1:
+                    successful += clearIptc();
+                    break;
+                case 2:
+                    successful += clearXmp();
+                    break;
+                case 3:
+                    successful += clearComments();
+                    break;
             }
         }
     }
-    QString result = QString::number(files.size()) + " files processed: " + QString::number(successful) + " successful and " + QString::number(files.size() - successful) + " failed";
-    m_fileModel->removeFile(0, files.size());
+
+    QString result = QString::number(successful) + "/" + QString::number(files.size());
     return result;
 }

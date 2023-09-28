@@ -14,8 +14,7 @@ Kirigami.Page {
             enabled: fileView.count > 0 ? true : false
             flat: true
             onClicked: {
-                var result = Kleaner.processFiles()
-                resultMessage.text = result
+                resultMessage.text = "Template \"" + templateModel.get(templateView.currentIndex).name + "\" successfully applied to " + Kleaner.processFiles(templateView.currentIndex) + " files"
                 resultMessage.visible = true
             }
         }
@@ -31,12 +30,21 @@ Kirigami.Page {
             type: Kirigami.MessageType.Positive
             text: ""
             visible: false
+            showCloseButton: true
+            actions: [
+                Kirigami.Action {
+                    text: "Clear file list"
+                    onTriggered: {
+                        Kleaner.fileModel.removeFiles(0, fileView.count)
+                    }
+                }
+            ]
         }
 
         Kirigami.InlineMessage {
             Layout.fillWidth: true
             type: Kirigami.MessageType.Warning
-            text: "Custom user templates are a work in progress. The default template removes all EXIF, IPTC, XMP and Comments metadata."
+            text: "Custom user templates are a work in progress."
             visible: true
         }
 
@@ -62,7 +70,7 @@ Kirigami.Page {
                         icon.name: "edit-delete"
                         flat: true
                         onClicked: {
-                            Kleaner.fileModel.removeFile(index, index)
+                            Kleaner.fileModel.removeFiles(index, index)
                         }
                     }
                 }
@@ -121,10 +129,26 @@ Kirigami.Page {
                 anchors.fill: parent
                 clip: true
                 model: ListModel {
+                    id: templateModel
                     
                     ListElement {
-                        name: "Remove all metadata"
+                        name: "Clear all EXIF"
                         checked: true
+                    }
+
+                    ListElement {
+                        name: "Clear all IPTC"
+                        checked: false
+                    }
+
+                    ListElement {
+                        name: "Clear all XMP"
+                        checked: false
+                    }
+
+                    ListElement {
+                        name: "Clear all comments"
+                        checked: false
                     }
                 }
 
@@ -148,7 +172,7 @@ Kirigami.Page {
                     Controls.Button {
                         icon.name: "edit-delete"
                         flat: true
-                        enabled: index == 0 ? false : true
+                        enabled: index < 4 ? false : true
                     }
                 }
                 header: Controls.ToolBar {
@@ -168,6 +192,7 @@ Kirigami.Page {
                         Controls.Button {
                             icon.name: "list-add"
                             flat: true
+                            enabled: false
                         }
                     }
                 }
