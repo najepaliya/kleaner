@@ -24,9 +24,13 @@ QVariant FileModel::data (const QModelIndex& index, int role) const
     return result;
 }
 
-void FileModel::removeFile (int first, int last)
+void FileModel::removeFiles (int first, int last)
 {
     beginRemoveRows (QModelIndex(), first, last);
+    for (int i = first; i < last + 1; i++)
+    {
+        list.removeAt(i);
+    }
     endRemoveRows ();
 }
 
