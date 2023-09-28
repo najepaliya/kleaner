@@ -8,6 +8,19 @@ import com.github.najepaliya.kleaner 1.0
 Kirigami.Page {
     title: i18n("Home")
 
+    actions.main: Kirigami.Action {
+        displayComponent: Controls.Button {
+            icon.name: "go-next"
+            icon.color: fileView.count > 0 ? "green" : "red"
+            flat: true
+            onClicked: {
+                Kleaner.processFiles()
+            }
+        }
+        // tooltip: "hello world"
+        // enabled: fileView.count > 0 ? true : false
+    }
+
     ColumnLayout {
         anchors.fill: parent
         spacing: 20
@@ -17,6 +30,7 @@ Kirigami.Page {
             Layout.fillWidth: true
 
             ListView {
+                id: fileView
                 anchors.fill: parent
                 clip: true
                 model: Kleaner.fileModel

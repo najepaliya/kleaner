@@ -12,7 +12,7 @@ class FileModel : public QAbstractListModel
         QVariant data (const QModelIndex& index, int role) const override;
         Q_INVOKABLE QString removeFile (int index);
         Q_INVOKABLE void insertFiles (QList<QUrl> urls);
-        // QHash<int,QByteArray> roleNames () const override;
+        QStringList getList();
     private:
         QStringList list;
 };
