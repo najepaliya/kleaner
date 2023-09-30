@@ -34,15 +34,14 @@ void FileModel::removeFiles (int first, int last)
     endRemoveRows ();
 }
 
-void FileModel::insertFiles (QList<QUrl> urls)
+void FileModel::insertFiles (QStringList filepaths)
 {
     beginResetModel ();
-    for (int i = 0; i < urls.size(); i++)
+    for (int i = 0; i < filepaths.size(); i++)
     {
-        QString filename = urls[i].toLocalFile();
-        if (!list.contains(filename))
+        if (!list.contains(filepaths[i]))
         {
-            list.append(filename);
+            list.append(filepaths[i]);
         }
     }
     list.sort ();

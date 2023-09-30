@@ -14,7 +14,7 @@ Kirigami.Page {
             enabled: fileView.count > 0 ? true : false
             flat: true
             onClicked: {
-                resultMessage.text = "Template \"" + templateModel.get(templateView.currentIndex).name + "\" successfully applied to " + Kleaner.processFiles(templateView.currentIndex) + " files"
+                resultMessage.text = "Template \"" + templateModel.get(templateView.currentIndex).name + "\" applied to " + Kleaner.processFiles(templateView.currentIndex)
                 resultMessage.visible = true
             }
         }
@@ -82,7 +82,10 @@ Kirigami.Page {
                         folder: shortcuts.home
                         selectMultiple: true
                         onAccepted: {
-                            Kleaner.fileModel.insertFiles (fileUrls)
+                            var result = Kleaner.filterInput(fileUrls)
+                            if (result) {
+                                applicationWindow().showPassiveNotification("Some files have been filtered due to incompatability")
+                            }
                         }
                         Component.onCompleted: visible = false
                     }

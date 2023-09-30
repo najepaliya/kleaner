@@ -18,7 +18,7 @@ FileModel* Kleaner::fileModel() const
 int Kleaner::clearExif()
 {
     int result = 0;
-    if (cleaner.hasExif() && cleaner.clearExif() && cleaner.applyChanges())
+    if (cleaner.hasExif() && !(cleaner.clearExif() && cleaner.applyChanges()))
     {
         result = 1;
     }
@@ -28,7 +28,7 @@ int Kleaner::clearExif()
 int Kleaner::clearIptc()
 {
     int result = 0;
-    if (cleaner.hasIptc() && cleaner.clearIptc() && cleaner.applyChanges())
+    if (cleaner.hasIptc() && !(cleaner.clearIptc() && cleaner.applyChanges()))
     {
         result = 1;
     }
@@ -38,7 +38,7 @@ int Kleaner::clearIptc()
 int Kleaner::clearXmp()
 {
     int result = 0;
-    if (cleaner.hasXmp() && cleaner.clearXmp() && cleaner.applyChanges())
+    if (cleaner.hasXmp() && !(cleaner.clearXmp() && cleaner.applyChanges()))
     {
         result = 1;
     }
@@ -48,9 +48,29 @@ int Kleaner::clearXmp()
 int Kleaner::clearComments()
 {
     int result = 0;
-    if (cleaner.hasComments() && cleaner.clearComments() && cleaner.applyChanges())
+    if (cleaner.hasComments() && !(cleaner.clearComments() && cleaner.applyChanges()))
     {
         result = 1;
+    }
+    return result;
+}
+
+bool Kleaner::filterInput (QList<QUrl> urls)
+{
+    bool result = true;
+    QStringList filepaths;
+    for (int i = 0; i < urls.size(); i++)
+    {
+        QString filepath = urls[i].toLocalFile();
+        if (cleaner.canWriteExif(filepath) || cleaner.canWriteIptc(filepath) || cleaner.canWriteXmp(filepath) || cleaner.canWriteComment(filepath))
+        {
+            filepaths.append(filepath);
+        }
+    }
+    m_fileModel->insertFiles(filepaths);
+    if (filepaths.size() == urls.size())
+    {
+        result = false;
     }
     return result;
 }
@@ -58,7 +78,8 @@ int Kleaner::clearComments()
 QString Kleaner::processFiles (int index)
 {
     QStringList files = m_fileModel->getList();
-    int successful = 0;
+    int unknown = 0;
+    int failures = 0;
 
     for (int i = 0; i < files.size(); i++)
     {
@@ -67,21 +88,25 @@ QString Kleaner::processFiles (int index)
             switch (index)
             {
                 case 0:
-                    successful += clearExif();
+                    failures += clearExif();
                     break;
                 case 1:
-                    successful += clearIptc();
+                    failures += clearIptc();
                     break;
                 case 2:
-                    successful += clearXmp();
+                    failures += clearXmp();
                     break;
                 case 3:
-                    successful += clearComments();
+                    failures += clearComments();
                     break;
             }
         }
+        else
+        {
+            unknown++;
+        }
     }
 
-    QString result = QString::number(successful) + "/" + QString::number(files.size());
+    QString result = QString::number(files.size()) + " files with " + QString::number(failures) + " metadata clearing/saving failures and " + QString::number(unknown) + " metadata loading failures.";
     return result;
 }
