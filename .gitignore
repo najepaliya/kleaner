@@ -1,6 +1,7 @@
 /*
 !.gitignore
 !CMakeLists.txt
+!com.github.najepaliya.kleaner.desktop
 !com.github.najepaliya.kleaner.json
 !com.github.najepaliya.kleaner.svg
 !readme.md
