@@ -25,6 +25,13 @@ Kirigami.Page {
         spacing: 20
 
         Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Warning
+            text: "Custom user templates are a work in progress."
+            visible: true
+        }
+
+        Kirigami.InlineMessage {
             id: resultMessage
             Layout.fillWidth: true
             type: Kirigami.MessageType.Positive
@@ -39,13 +46,6 @@ Kirigami.Page {
                     }
                 }
             ]
-        }
-
-        Kirigami.InlineMessage {
-            Layout.fillWidth: true
-            type: Kirigami.MessageType.Warning
-            text: "Custom user templates are a work in progress."
-            visible: true
         }
 
         Controls.GroupBox {
