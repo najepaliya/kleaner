@@ -21,6 +21,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 install(PROGRAMS com.github.najepaliya.kleaner.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES com.github.najepaliya.kleaner.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 install(FILES com.github.najepaliya.kleaner.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
 
 add_subdirectory(src)
