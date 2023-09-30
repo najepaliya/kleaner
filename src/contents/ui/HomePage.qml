@@ -82,8 +82,8 @@ Kirigami.Page {
                         folder: shortcuts.home
                         selectMultiple: true
                         onAccepted: {
-                            var result = Kleaner.filterInput(fileUrls)
-                            if (result) {
+                            var filtered = Kleaner.filterInput(fileUrls)
+                            if (filtered) {
                                 applicationWindow().showPassiveNotification("Some files have been filtered due to incompatability")
                             }
                         }
@@ -192,6 +192,7 @@ Kirigami.Page {
                             Layout.fillWidth: true
                         }
 
+                        // implement custom user templates
                         Controls.Button {
                             icon.name: "list-add"
                             flat: true

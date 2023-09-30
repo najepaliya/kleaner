@@ -11,15 +11,19 @@ class Kleaner : public QObject
     Q_PROPERTY (FileModel* fileModel READ fileModel NOTIFY fileModelChanged);
 
     public:
+        // required
         explicit Kleaner (QObject* parent = nullptr);
         ~Kleaner() override;
 
+        // property methods
         FileModel* fileModel() const;
         Q_SIGNAL void fileModelChanged();
 
+        // invokable via qml
         Q_INVOKABLE bool filterInput (QList<QUrl> urls);
         Q_INVOKABLE QString processFiles (int index);
         
+        // internal class methods
         int clearExif();
         int clearIptc();
         int clearXmp();
