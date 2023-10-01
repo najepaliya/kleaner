@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop">
-    <id>com.github.najepaliya.kleaner</id>
+    <id>io.github.najepaliya.kleaner</id>
     <name>Kleaner</name>
     <summary>An Image Metadata Cleaner</summary>
     <metadata_license>CC0-1.0</metadata_license>
@@ -8,7 +8,7 @@
     <description>
         <p>Kleaner is an image metadata cleaner which can handle EXIF, IPTC, XMP and Comments.</p>
     </description>
-    <launchable type="desktop-id">com.github.najepaliya.kleaner.desktop</launchable>
+    <launchable type="desktop-id">io.github.najepaliya.kleaner.desktop</launchable>
     <provides>
         <binary>kleaner</binary>
     </provides>
