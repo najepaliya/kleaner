@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QtQml>
 #include <QUrl>
+#include <QQuickStyle>
 #include <KLocalizedContext>
 #include <KLocalizedString>
 #include <Kleaner.hpp>
@@ -16,6 +17,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName(QStringLiteral("Kleaner"));
 
     QGuiApplication::setDesktopFileName("com.github.najepaliya.kleaner");
+
+    QQuickStyle::setStyle("org.kde.desktop");
 
     QQmlApplicationEngine engine;
 
