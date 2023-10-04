@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
     QCoreApplication::setApplicationName(QStringLiteral("Kleaner"));
 
-    QGuiApplication::setDesktopFileName("io.github.najepaliya.kleaner");
+    QGuiApplication::setDesktopFileName("io.github.najepaliya.kleaner.desktop");
 
     QQuickStyle::setStyle("org.kde.desktop");
 
