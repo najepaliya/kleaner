@@ -16,14 +16,14 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
     QCoreApplication::setApplicationName(QStringLiteral("Kleaner"));
 
-    QGuiApplication::setDesktopFileName("com.github.najepaliya.kleaner");
+    QGuiApplication::setDesktopFileName("io.github.najepaliya.kleaner");
 
     QQuickStyle::setStyle("org.kde.desktop");
 
     QQmlApplicationEngine engine;
 
     Kleaner kleaner;
-    qmlRegisterSingletonInstance<Kleaner>("com.github.najepaliya.kleaner", 1, 0, "Kleaner", &kleaner);
+    qmlRegisterSingletonInstance<Kleaner>("io.github.najepaliya.kleaner", 1, 0, "Kleaner", &kleaner);
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

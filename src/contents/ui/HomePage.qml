@@ -3,7 +3,7 @@ import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.20 as Kirigami
 import QtQuick.Dialogs 1.0
-import com.github.najepaliya.kleaner 1.0
+import io.github.najepaliya.kleaner 1.0
 
 Kirigami.Page {
     title: i18n("Home")
