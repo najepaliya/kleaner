@@ -61,7 +61,7 @@ Kirigami.Page {
                     activeBackgroundColor: "lightblue"
                     
                     Controls.Label {
-                        text: i18n(display)
+                        text: display
                         Layout.fillWidth: true
                         elide: Text.ElideLeft
                     }
