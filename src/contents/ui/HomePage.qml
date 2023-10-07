@@ -9,14 +9,11 @@ Kirigami.Page {
     title: i18n("Home")
 
     actions.main: Kirigami.Action {
-        displayComponent: Controls.Button {
-            icon.name: "media-playback-start"
-            enabled: fileView.count > 0 ? true : false
-            flat: true
-            onClicked: {
-                resultMessage.text = "Template \"" + templateModel.get(templateView.currentIndex).name + "\" applied to " + Kleaner.processFiles(templateView.currentIndex)
-                resultMessage.visible = true
-            }
+        icon.name: "media-playback-start"
+        enabled: fileView.count > 0 ? true : false
+        onTriggered: {
+            resultMessage.text = "Template \"" + templateModel.get(templateView.currentIndex).name + "\" applied to " + Kleaner.processFiles(templateView.currentIndex)
+            resultMessage.visible = true
         }
     }
 
