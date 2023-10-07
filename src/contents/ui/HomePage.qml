@@ -48,7 +48,7 @@ Kirigami.Page {
             ]
         }
 
-        Controls.GroupBox {
+        Controls.ScrollView {
             Layout.fillHeight: true
             Layout.fillWidth: true
 
@@ -58,6 +58,7 @@ Kirigami.Page {
                 clip: true
                 model: Kleaner.fileModel
                 delegate: Kirigami.BasicListItem {
+                    rightPadding: 20
                     
                     Controls.Label {
                         text: display
@@ -74,6 +75,10 @@ Kirigami.Page {
                     }
                 }
                 header: Controls.ToolBar {
+                    width: ListView.view.width
+                    leftPadding: 20
+                    rightPadding: 20
+                    z: 2
                     
                     FileDialog {
                         id: fileDialog
@@ -88,11 +93,6 @@ Kirigami.Page {
                         }
                         Component.onCompleted: visible = false
                     }
-                    
-                    width: ListView.view.width
-                    leftPadding: 16
-                    rightPadding: 8
-                    z: 2
                     
                     RowLayout {
                         width: parent.width
@@ -122,7 +122,7 @@ Kirigami.Page {
             }
         }
 
-        Controls.GroupBox {
+        Controls.ScrollView {
             Layout.fillHeight: true
             Layout.fillWidth: true
 
@@ -159,6 +159,7 @@ Kirigami.Page {
                 }
 
                 delegate: Kirigami.BasicListItem {
+                    rightPadding: 20
 
                     Controls.RadioButton {
                         Layout.fillWidth: true
@@ -178,8 +179,8 @@ Kirigami.Page {
                 }
                 header: Controls.ToolBar {
                     width: ListView.view.width
-                    leftPadding: 16
-                    rightPadding: 8
+                    leftPadding: 20
+                    rightPadding: 20
                     z: 2
                     
                     RowLayout {
