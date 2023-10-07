@@ -63,7 +63,7 @@ Kirigami.Page {
                     Controls.Label {
                         text: display
                         Layout.fillWidth: true
-                        elide: Text.ElideLeft
+                        elide: Text.ElideMiddle
                     }
 
                     Controls.Button {
