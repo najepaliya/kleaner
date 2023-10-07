@@ -58,7 +58,6 @@ Kirigami.Page {
                 clip: true
                 model: Kleaner.fileModel
                 delegate: Kirigami.BasicListItem {
-                    activeBackgroundColor: "lightblue"
                     
                     Controls.Label {
                         text: display
@@ -160,7 +159,6 @@ Kirigami.Page {
                 }
 
                 delegate: Kirigami.BasicListItem {
-                    activeBackgroundColor: "lightblue"
 
                     Controls.RadioButton {
                         Layout.fillWidth: true
