@@ -187,6 +187,7 @@ Kirigami.Page {
 
                 delegate: Kirigami.BasicListItem {
                     onClicked: {
+                        radioGroup.buttons[index].checked = true
                         templateView.currentIndex = -1
                     }
                     rightPadding: 20
