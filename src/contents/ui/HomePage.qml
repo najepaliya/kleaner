@@ -9,6 +9,11 @@ Kirigami.Page {
     title: i18n("Home")
 
     actions.main: Kirigami.Action {
+        text: "Process file(s)"
+        displayHint: Kirigami.DisplayHint.IconOnly
+        Controls.ToolTip.text: "Process file(s)"
+        Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
+        Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
         icon.name: "media-playback-start"
         enabled: fileView.count > 0 ? true : false
         onTriggered: {
@@ -64,6 +69,11 @@ Kirigami.Page {
                     }
 
                     Controls.Button {
+                        text: "Remove file"
+                        display: Controls.AbstractButton.IconOnly
+                        Controls.ToolTip.text: "Remove file"
+                        Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
+                        Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                         icon.name: "edit-delete"
                         flat: true
                         onClicked: {
@@ -100,6 +110,11 @@ Kirigami.Page {
                         }
 
                         Controls.Button {
+                            text: "Add file(s)"
+                            display: Controls.AbstractButton.IconOnly
+                            Controls.ToolTip.text: "Add file(s)"
+                            Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
+                            Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                             icon.name: "list-add"
                             flat: true
                             onClicked: {
@@ -169,6 +184,11 @@ Kirigami.Page {
                     }
 
                     Controls.Button {
+                        text: "Remove template"
+                        display: Controls.AbstractButton.IconOnly
+                        Controls.ToolTip.text: "Remove template"
+                        Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
+                        Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                         icon.name: "edit-delete"
                         flat: true
                         enabled: index < 4 ? false : true
@@ -190,6 +210,11 @@ Kirigami.Page {
 
                         // implement custom user templates
                         Controls.Button {
+                            text: "Add template"
+                            display: Controls.AbstractButton.IconOnly
+                            Controls.ToolTip.text: "Add template"
+                            Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
+                            Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                             icon.name: "list-add"
                             flat: true
                             enabled: false
