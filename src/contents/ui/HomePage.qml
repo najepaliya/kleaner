@@ -17,7 +17,7 @@ Kirigami.Page {
         icon.name: "media-playback-start"
         enabled: fileView.count > 0 ? true : false
         onTriggered: {
-            resultMessage.text = "Template \"" + templateModel.get(templateView.currentIndex).name + "\" applied to " + Kleaner.processFiles(templateView.currentIndex)
+            resultMessage.text = "Template \"" + radioGroup.checkedButton.name + "\" applied to " + Kleaner.processFiles(radioGroup.checkedButton.index)
             resultMessage.visible = true
         }
     }
@@ -45,6 +45,7 @@ Kirigami.Page {
                     text: "Clear file list"
                     onTriggered: {
                         Kleaner.fileModel.removeFiles(0, fileView.count)
+                        resultMessage.visible = false
                     }
                 }
             ]
@@ -53,13 +54,18 @@ Kirigami.Page {
         Controls.ScrollView {
             Layout.fillHeight: true
             Layout.fillWidth: true
+            Layout.maximumHeight: parent.height / 2
 
             ListView {
                 id: fileView
+                currentIndex: -1
                 anchors.fill: parent
                 clip: true
                 model: Kleaner.fileModel
                 delegate: Kirigami.BasicListItem {
+                    onClicked: {
+                        fileView.currentIndex = -1
+                    }
                     rightPadding: 20
                     
                     Controls.Label {
@@ -144,9 +150,11 @@ Kirigami.Page {
         Controls.ScrollView {
             Layout.fillHeight: true
             Layout.fillWidth: true
+            Layout.maximumHeight: parent.height / 2
 
             ListView {
                 id: templateView
+                currentIndex: -1
                 anchors.fill: parent
                 clip: true
                 model: ListModel {
@@ -178,14 +186,16 @@ Kirigami.Page {
                 }
 
                 delegate: Kirigami.BasicListItem {
+                    onClicked: {
+                        templateView.currentIndex = -1
+                    }
                     rightPadding: 20
 
                     Controls.RadioButton {
+                        property string name: model.name
+                        property int index: model.index
                         checked: model.checked
                         Controls.ButtonGroup.group: radioGroup
-                        onClicked: {
-                            templateView.currentIndex = index
-                        }
                     }
 
                     Controls.Label {
