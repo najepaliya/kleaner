@@ -66,6 +66,9 @@ Kirigami.Page {
                         text: display
                         Layout.fillWidth: true
                         elide: Text.ElideMiddle
+                        Controls.ToolTip.text: display
+                        Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? truncated && pressed : truncated && hovered
+                        Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                     }
 
                     Controls.Button {
@@ -106,6 +109,10 @@ Kirigami.Page {
 
                         Controls.Label {
                             text: i18n("Files")
+                            elide: Text.ElideMiddle
+                            Controls.ToolTip.text: i18n("Files")
+                            Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? truncated && pressed : truncated && hovered
+                            Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                             Layout.fillWidth: true
                         }
 
@@ -174,13 +181,20 @@ Kirigami.Page {
                     rightPadding: 20
 
                     Controls.RadioButton {
-                        Layout.fillWidth: true
-                        text: model.name
                         checked: model.checked
                         Controls.ButtonGroup.group: radioGroup
                         onClicked: {
                             templateView.currentIndex = index
                         }
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        text: model.name
+                        elide: Text.ElideMiddle
+                        Controls.ToolTip.text: model.name
+                        Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? truncated && pressed : truncated && hovered
+                        Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                     }
 
                     Controls.Button {
@@ -205,6 +219,10 @@ Kirigami.Page {
 
                         Controls.Label {
                             text: i18n("Templates")
+                            elide: Text.ElideMiddle
+                            Controls.ToolTip.text: i18n("Templates")
+                            Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? truncated && pressed : truncated && hovered
+                            Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                             Layout.fillWidth: true
                         }
 
