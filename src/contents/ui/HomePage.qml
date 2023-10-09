@@ -95,7 +95,7 @@ Kirigami.Page {
                     FileDialog {
                         id: fileDialog
                         title: i18n("Please choose your file(s)")
-                        folder: shortcuts.home
+                        folder: shortcuts.pictures
                         selectMultiple: true
                         onAccepted: {
                             var filtered = Kleaner.filterInput(fileUrls)
@@ -155,22 +155,22 @@ Kirigami.Page {
                     id: templateModel
                     
                     ListElement {
-                        name: i18n("Clear all EXIF")
+                        name: "Clear all EXIF"
                         checked: true
                     }
 
                     ListElement {
-                        name: i18n("Clear all IPTC")
+                        name: "Clear all IPTC"
                         checked: false
                     }
 
                     ListElement {
-                        name: i18n("Clear all XMP")
+                        name: "Clear all XMP"
                         checked: false
                     }
 
                     ListElement {
-                        name: i18n("Clear all comments")
+                        name: "Clear all comments"
                         checked: false
                     }
                 }
