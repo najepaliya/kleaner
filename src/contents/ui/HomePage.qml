@@ -9,12 +9,12 @@ Kirigami.Page {
     title: i18n("Home")
 
     actions.main: Kirigami.Action {
-        text: "Process file(s)"
+        text: i18n("Process file(s)")
         displayHint: Kirigami.DisplayHint.IconOnly
         icon.name: "media-playback-start"
         enabled: fileView.count > 0 ? true : false
         onTriggered: {
-            resultMessage.text = "Template \"" + radioGroup.checkedButton.name + "\" applied to " + Kleaner.processFiles(radioGroup.checkedButton.index)
+            resultMessage.text = i18n("Template \"" + radioGroup.checkedButton.name + "\" applied to " + Kleaner.processFiles(radioGroup.checkedButton.index))
             resultMessage.visible = true
         }
     }
@@ -26,7 +26,7 @@ Kirigami.Page {
         Kirigami.InlineMessage {
             Layout.fillWidth: true
             type: Kirigami.MessageType.Warning
-            text: "Custom user templates are a work in progress."
+            text: i18n("Custom user templates are a work in progress.")
             visible: true
         }
 
@@ -39,7 +39,7 @@ Kirigami.Page {
             showCloseButton: true
             actions: [
                 Kirigami.Action {
-                    text: "Clear file list"
+                    text: i18n("Clear file list")
                     onTriggered: {
                         Kleaner.fileModel.removeFiles(0, fileView.count)
                         resultMessage.visible = false
@@ -74,7 +74,7 @@ Kirigami.Page {
                     }
 
                     Controls.Button {
-                        text: "Remove file"
+                        text: i18n("Remove file")
                         display: Controls.AbstractButton.IconOnly
                         Controls.ToolTip.text: text
                         Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
@@ -94,7 +94,7 @@ Kirigami.Page {
                     
                     FileDialog {
                         id: fileDialog
-                        title: "Please choose your file(s)"
+                        title: i18n("Please choose your file(s)")
                         folder: shortcuts.home
                         selectMultiple: true
                         onAccepted: {
@@ -119,7 +119,7 @@ Kirigami.Page {
                         }
 
                         Controls.ToolButton {
-                            text: "Add file(s)"
+                            text: i18n("Add file(s)")
                             display: Controls.AbstractButton.IconOnly
                             Controls.ToolTip.text: text
                             Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
@@ -137,7 +137,7 @@ Kirigami.Page {
                     anchors.centerIn: parent
                     width: parent.width - Kirigami.Units.largeSpacing * 4
                     visible: fileView.count == 0
-                    text: "Select files to continue"
+                    text: i18n("Select files to continue")
                 }
             }
         }
@@ -155,22 +155,22 @@ Kirigami.Page {
                     id: templateModel
                     
                     ListElement {
-                        name: "Clear all EXIF"
+                        name: i18n("Clear all EXIF")
                         checked: true
                     }
 
                     ListElement {
-                        name: "Clear all IPTC"
+                        name: i18n("Clear all IPTC")
                         checked: false
                     }
 
                     ListElement {
-                        name: "Clear all XMP"
+                        name: i18n("Clear all XMP")
                         checked: false
                     }
 
                     ListElement {
-                        name: "Clear all comments"
+                        name: i18n("Clear all comments")
                         checked: false
                     }
                 }
@@ -203,7 +203,7 @@ Kirigami.Page {
                     }
 
                     Controls.Button {
-                        text: "Remove template"
+                        text: i18n("Remove template")
                         display: Controls.AbstractButton.IconOnly
                         Controls.ToolTip.text: text
                         Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
@@ -233,12 +233,12 @@ Kirigami.Page {
 
                         // implement custom user templates
                         Controls.ToolButton {
-                            text: "Add template"
+                            text: i18n("Add template")
                             display: Controls.AbstractButton.IconOnly
                             Controls.ToolTip.text: text
                             Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                             Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
-                            icon.name: "list-add"
+                            icon.name: i18n("list-add")
                             enabled: false
                         }
                     }
