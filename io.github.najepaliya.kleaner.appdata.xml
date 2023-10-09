@@ -22,7 +22,7 @@
     <screenshots>
         <screenshot type="default">
             <caption>Main view of Kleaner</caption>
-            <image type="source" width="630" height="1041">https://raw.githubusercontent.com/najepaliya/kleaner/main/screenshot.png</image>
+            <image type="source" width="630" height="1031">https://raw.githubusercontent.com/najepaliya/kleaner/main/screenshot.png</image>
         </screenshot>
     </screenshots>
     <content_rating type="oars-1.0"/>
