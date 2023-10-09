@@ -56,7 +56,6 @@ Kirigami.Page {
             ListView {
                 id: fileView
                 currentIndex: -1
-                anchors.fill: parent
                 clip: true
                 model: Kleaner.fileModel
                 delegate: Kirigami.BasicListItem {
@@ -151,7 +150,6 @@ Kirigami.Page {
             ListView {
                 id: templateView
                 currentIndex: -1
-                anchors.fill: parent
                 clip: true
                 model: ListModel {
                     id: templateModel
