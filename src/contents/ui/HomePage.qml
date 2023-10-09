@@ -11,9 +11,6 @@ Kirigami.Page {
     actions.main: Kirigami.Action {
         text: "Process file(s)"
         displayHint: Kirigami.DisplayHint.IconOnly
-        Controls.ToolTip.text: "Process file(s)"
-        Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
-        Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
         icon.name: "media-playback-start"
         enabled: fileView.count > 0 ? true : false
         onTriggered: {
