@@ -21,7 +21,7 @@ Kirigami.Page {
 
     ColumnLayout {
         anchors.fill: parent
-        spacing: 20
+        spacing: Kirigami.Units.gridUnit
 
         Kirigami.InlineMessage {
             Layout.fillWidth: true
@@ -63,7 +63,7 @@ Kirigami.Page {
                     onClicked: {
                         fileView.currentIndex = -1
                     }
-                    rightPadding: 20
+                    rightPadding: Kirigami.Units.gridUnit
                     
                     Controls.Label {
                         text: display
@@ -89,8 +89,8 @@ Kirigami.Page {
                 }
                 header: Controls.ToolBar {
                     width: ListView.view.width
-                    leftPadding: 20
-                    rightPadding: 20
+                    leftPadding: Kirigami.Units.gridUnit
+                    rightPadding: Kirigami.Units.gridUnit
                     z: 2
                     
                     FileDialog {
@@ -187,7 +187,7 @@ Kirigami.Page {
                         radioGroup.buttons[index].checked = true
                         templateView.currentIndex = -1
                     }
-                    rightPadding: 20
+                    rightPadding: Kirigami.Units.gridUnit
 
                     Controls.RadioButton {
                         property string name: model.name
@@ -218,8 +218,8 @@ Kirigami.Page {
                 }
                 header: Controls.ToolBar {
                     width: ListView.view.width
-                    leftPadding: 20
-                    rightPadding: 20
+                    leftPadding: Kirigami.Units.gridUnit
+                    rightPadding: Kirigami.Units.gridUnit
                     z: 2
                     
                     RowLayout {
