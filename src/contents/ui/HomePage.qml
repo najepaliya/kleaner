@@ -119,14 +119,13 @@ Kirigami.Page {
                             Layout.fillWidth: true
                         }
 
-                        Controls.Button {
+                        Controls.ToolButton {
                             text: "Add file(s)"
                             display: Controls.AbstractButton.IconOnly
                             Controls.ToolTip.text: text
                             Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                             Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                             icon.name: "list-add"
-                            flat: true
                             onClicked: {
                                 fileDialog.open()
                             }
@@ -235,14 +234,13 @@ Kirigami.Page {
                         }
 
                         // implement custom user templates
-                        Controls.Button {
+                        Controls.ToolButton {
                             text: "Add template"
                             display: Controls.AbstractButton.IconOnly
                             Controls.ToolTip.text: text
                             Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                             Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                             icon.name: "list-add"
-                            flat: true
                             enabled: false
                         }
                     }
