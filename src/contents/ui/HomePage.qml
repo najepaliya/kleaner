@@ -77,7 +77,7 @@ Kirigami.Page {
                     Controls.Button {
                         text: "Remove file"
                         display: Controls.AbstractButton.IconOnly
-                        Controls.ToolTip.text: "Remove file"
+                        Controls.ToolTip.text: text
                         Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                         Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                         icon.name: "edit-delete"
@@ -113,7 +113,7 @@ Kirigami.Page {
                         Controls.Label {
                             text: i18n("Files")
                             elide: Text.ElideMiddle
-                            Controls.ToolTip.text: i18n("Files")
+                            Controls.ToolTip.text: text
                             Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? truncated && pressed : truncated && hovered
                             Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                             Layout.fillWidth: true
@@ -122,7 +122,7 @@ Kirigami.Page {
                         Controls.Button {
                             text: "Add file(s)"
                             display: Controls.AbstractButton.IconOnly
-                            Controls.ToolTip.text: "Add file(s)"
+                            Controls.ToolTip.text: text
                             Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                             Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                             icon.name: "list-add"
@@ -200,7 +200,7 @@ Kirigami.Page {
                         Layout.fillWidth: true
                         text: model.name
                         elide: Text.ElideMiddle
-                        Controls.ToolTip.text: model.name
+                        Controls.ToolTip.text: text
                         Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? truncated && pressed : truncated && hovered
                         Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                     }
@@ -208,7 +208,7 @@ Kirigami.Page {
                     Controls.Button {
                         text: "Remove template"
                         display: Controls.AbstractButton.IconOnly
-                        Controls.ToolTip.text: "Remove template"
+                        Controls.ToolTip.text: text
                         Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                         Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                         icon.name: "edit-delete"
@@ -228,7 +228,7 @@ Kirigami.Page {
                         Controls.Label {
                             text: i18n("Templates")
                             elide: Text.ElideMiddle
-                            Controls.ToolTip.text: i18n("Templates")
+                            Controls.ToolTip.text: text
                             Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? truncated && pressed : truncated && hovered
                             Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                             Layout.fillWidth: true
@@ -238,7 +238,7 @@ Kirigami.Page {
                         Controls.Button {
                             text: "Add template"
                             display: Controls.AbstractButton.IconOnly
-                            Controls.ToolTip.text: "Add template"
+                            Controls.ToolTip.text: text
                             Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                             Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                             icon.name: "list-add"
