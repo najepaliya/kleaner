@@ -152,26 +152,11 @@ Kirigami.Page {
                 currentIndex: -1
                 clip: true
                 model: ListModel {
-                    id: templateModel
-                    
-                    ListElement {
-                        name: "Clear all EXIF"
-                        checked: true
-                    }
-
-                    ListElement {
-                        name: "Clear all IPTC"
-                        checked: false
-                    }
-
-                    ListElement {
-                        name: "Clear all XMP"
-                        checked: false
-                    }
-
-                    ListElement {
-                        name: "Clear all comments"
-                        checked: false
+                    Component.onCompleted: {
+                        append({ name: i18n("Clear all EXIF"), checked: true });
+                        append({ name: i18n("Clear all IPTC"), checked: false });
+                        append({ name: i18n("Clear all XMP"), checked: false });
+                        append({ name: i18n("Clear all comments"), checked: false });
                     }
                 }
 
