@@ -75,7 +75,7 @@ bool Kleaner::filterInput (QList<QUrl> urls)
     return result;
 }
 
-QString Kleaner::processFiles (int index)
+QVariantMap Kleaner::processFiles (int index)
 {
     QStringList files = m_fileModel->getList();
     int unknown = 0;
@@ -107,6 +107,9 @@ QString Kleaner::processFiles (int index)
         }
     }
 
-    QString result = QString::number(files.size()) + " files with " + QString::number(failures) + " metadata clearing/saving failures and " + QString::number(unknown) + " metadata loading failures.";
+    QVariantMap result = {{"total", files.size()}, {"failures", failures}, {"unknown", unknown}};
     return result;
+
+    // QString result = QString::number(files.size()) + " files with " + QString::number(failures) + " metadata clearing/saving failures and " + QString::number(unknown) + " metadata loading failures.";
+    // return result;
 }

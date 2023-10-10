@@ -14,7 +14,9 @@ Kirigami.Page {
         icon.name: "media-playback-start"
         enabled: fileView.count > 0 ? true : false
         onTriggered: {
-            resultMessage.text = i18n("Template \"" + radioGroup.checkedButton.name + "\" applied to " + Kleaner.processFiles(radioGroup.checkedButton.index))
+            var template = radioGroup.checkedButton.name
+            var result = Kleaner.processFiles(radioGroup.checkedButton.index);
+            resultMessage.text = i18n("Template \"%1\" applied to %2 file(s) with %3 metadata clearing/saving failure(s) and %4 metadata loading failure(s).", template, result.total, result.failures, result.unknown);
             resultMessage.visible = true
         }
     }

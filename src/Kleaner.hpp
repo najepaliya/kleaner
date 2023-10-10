@@ -21,7 +21,7 @@ class Kleaner : public QObject
 
         // invokable via qml
         Q_INVOKABLE bool filterInput (QList<QUrl> urls);
-        Q_INVOKABLE QString processFiles (int index);
+        Q_INVOKABLE QVariantMap processFiles (int index);
         
         // internal class methods
         int clearExif();
