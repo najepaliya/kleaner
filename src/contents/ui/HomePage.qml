@@ -225,7 +225,7 @@ Kirigami.Page {
                             Controls.ToolTip.text: text
                             Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
                             Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
-                            icon.name: i18n("list-add")
+                            icon.name: "list-add"
                             enabled: false
                         }
                     }
