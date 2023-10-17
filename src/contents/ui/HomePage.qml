@@ -39,15 +39,6 @@ Kirigami.Page {
             text: ""
             visible: false
             showCloseButton: true
-            actions: [
-                Kirigami.Action {
-                    text: i18n("Clear file list")
-                    onTriggered: {
-                        Kleaner.fileModel.removeFiles(0, fileView.count)
-                        resultMessage.visible = false
-                    }
-                }
-            ]
         }
 
         Controls.ScrollView {
