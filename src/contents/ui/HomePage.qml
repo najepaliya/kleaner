@@ -112,6 +112,18 @@ Kirigami.Page {
                         }
 
                         Controls.ToolButton {
+                            text: i18n("Clear file(s)")
+                            display: Controls.AbstractButton.IconOnly
+                            Controls.ToolTip.text: text
+                            Controls.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
+                            Controls.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
+                            icon.name: "edit-clear-history"
+                            onClicked: {
+                                Kleaner.fileModel.removeFiles(0, fileView.count)
+                            }
+                        }
+
+                        Controls.ToolButton {
                             text: i18n("Add file(s)")
                             display: Controls.AbstractButton.IconOnly
                             Controls.ToolTip.text: text
