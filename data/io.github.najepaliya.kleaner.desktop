@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2024 Neel Jepaliya <najepaliya@gmail.com>
+[Desktop Entry]
+Name=kleaner
+Comment=Kleaner Kirigami Application
+Version=1.1
+Exec=kleaner
+Icon=io.github.najepaliya.kleaner
+Type=Application
+Terminal=false
+Categories=KDE;Qt;Utility;

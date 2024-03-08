@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-License-Identifier: FSFAP
+  SPDX-FileCopyrightText: 2024 Neel Jepaliya <najepaliya@gmail.com>
+ -->
+<component type="desktop-application">
+  <id>io.github.najepaliya.kleaner</id>
+  <name>Kleaner</name>
+  <summary>A utility application for clearing multimedia metadata such as EXIF, IPTC and XMP.</summary>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <developer_name>Neel Jepaliya</developer_name>
+  <description>
+    <p>Multiple paragraphs of long description, describing this software component.</p>
+    <p>You can also use ordered and unordered lists:</p>
+    <ul>
+      <li>Feature 1</li>
+      <li>Feature 2</li>
+    </ul>
+    <p>Keep in mind to XML-escape characters, and that this is not HTML markup.</p>
+  </description>
+</component>

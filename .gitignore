@@ -1,11 +1,9 @@
 /*
+!data
+!license
+!source
 !.gitignore
 !CMakeLists.txt
-!io.github.najepaliya.kleaner.appdata.xml
-!io.github.najepaliya.kleaner.desktop
 !io.github.najepaliya.kleaner.json
-!io.github.najepaliya.kleaner.svg
-!license.txt
 !readme.md
 !screenshot.png
-!src

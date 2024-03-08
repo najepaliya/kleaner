@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Kleaner
-Comment=Image Metadata Cleaner
-Version=1.0
-Exec=kleaner
-Icon=io.github.najepaliya.kleaner
-Type=Application
-Terminal=false
-Categories=Qt;KDE;
