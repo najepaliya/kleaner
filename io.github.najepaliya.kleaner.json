@@ -8,14 +8,11 @@
   "desktop-file-name-suffix": " (Nightly)",
   "finish-args": [
     "--share=ipc",
-    "--share=network",
     "--socket=x11",
     "--socket=wayland",
-    "--device=dri",
-    "--filesystem=home"
+    "--device=dri"
   ],
   "separate-locales": false,
-
   "modules": [
     {
       "name": "kleaner",
