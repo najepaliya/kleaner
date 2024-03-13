@@ -9,6 +9,7 @@ include(FeatureSummary)
 
 set(QT6_MIN_VERSION 6.5.0)
 set(KF6_MIN_VERSION 6.0.0)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 
