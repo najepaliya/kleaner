@@ -10,4 +10,4 @@ Kleaner is available on Flathub.
 
 ## Screenshots
 
-![Kleaner main page](screenshot.png)
+![Kleaner main page](data/screenshot.png)
