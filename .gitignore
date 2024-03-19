@@ -1,9 +1,11 @@
 /*
+!backend
+!config
 !data
+!frontend
 !license
-!source
 !.gitignore
 !CMakeLists.txt
-!io.github.najepaliya.kleaner.json
+!io.github.najealiya.kleaner
 !readme.md
 !screenshot.png
