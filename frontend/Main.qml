@@ -9,17 +9,12 @@ Kirigami.ApplicationWindow {
 
     property int randNum: 0
 
-    Backend {
-        id: myBackend
-        onNumberEmitted: (num) => {
-            randNum = num
-        }
-    }
-
     ColumnLayout {
         Button {
             text: "Generate Number"
-            onClicked: myBackend.generateNumber()
+            onClicked: () => {
+                randNum = Backend.generateNumber()
+            }
         }
 
         Label {

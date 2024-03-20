@@ -7,11 +7,9 @@ class Backend : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
+    QML_SINGLETON
 
     public:
         explicit Backend(QObject* parent = nullptr);
-        Q_INVOKABLE void generateNumber();
-    
-    signals:
-        void numberEmitted(int num);
+        Q_INVOKABLE int generateNumber();
 };

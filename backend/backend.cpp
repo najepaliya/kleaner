@@ -4,7 +4,7 @@ Backend::Backend(QObject* parent) : QObject{parent}
 {
 }
 
-void Backend::generateNumber()
+int Backend::generateNumber()
 {
-    emit numberEmitted(2);
+    return 2;
 }
