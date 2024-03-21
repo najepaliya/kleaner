@@ -1,9 +1,59 @@
 import QtQuick as Q
 import QtQuick.Controls as QC
+import QtQuick.Dialogs as QD
 import QtQuick.Layouts as QL
+import org.kde.kirigami as K
 
-Q.Rectangle {
+Q.ListView {
     QL.Layout.fillHeight: true
     QL.Layout.fillWidth: true
-    color: "red"
+    header: QC.ToolBar {
+        z: 2
+        width: parent.width
+        horizontalPadding: K.Units.gridUnit
+        QL.RowLayout {
+            width: parent.width
+            Q.Text {
+                QL.Layout.fillWidth: true
+                text: "Files"
+            }
+            QC.ToolButton {
+                icon.name: "edit-clear-history"
+            }
+            QD.FileDialog {
+                id: fileDialog
+                fileMode: QD.FileDialog.OpenFiles
+                onAccepted: () => {
+                    console.log(fileDialog.selectedFiles)
+                }
+            }
+            QC.ToolButton {
+                icon.name: "list-add"
+                onClicked: () => {
+                    fileDialog.open()
+                }
+            }
+        }
+    }
+    headerPositioning: Q.ListView.OverlayHeader
+    clip: true
+    id: listView
+    model: 4
+    delegate: QC.ItemDelegate {
+        height: icon.implicitHeight
+        width: parent.width
+        QL.RowLayout {
+            anchors.fill: parent
+            Q.Text {
+                text: index
+                QL.Layout.fillWidth: true
+                QL.Layout.leftMargin: K.Units.gridUnit
+            }
+            QC.ToolButton {
+                id: icon
+                icon.name: "edit-delete"
+                QL.Layout.rightMargin: K.Units.gridUnit
+            }
+        }
+    }
 }
