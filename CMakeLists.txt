@@ -22,13 +22,13 @@ qt_standard_project_setup(REQUIRES ${QT6_MIN_VERSION})
 
 # add executable target
 qt_add_executable(kleaner
-    backend/main.cpp
+    main/main.cpp
 )
 
 # generate qml module from executable target
 qt_add_qml_module(kleaner
     URI io.github.najepaliya.kleaner
-    QML_FILES frontend/Main.qml
+    QML_FILES main/Main.qml frontend/pages/Home.qml frontend/components/home/FileView.qml frontend/components/home/TemplateView.qml
     SOURCES backend/backend.hpp backend/backend.cpp
 )
 
