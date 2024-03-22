@@ -42,7 +42,6 @@ Q.ListView {
             }
             QC.ToolButton {
                 icon.name: "edit-entry"
-                QL.Layout.rightMargin: K.Units.gridUnit
             }
             QC.ToolButton {
                 icon.name: "edit-delete"
