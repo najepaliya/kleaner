@@ -11,5 +11,5 @@ class Backend : public QObject
 
     public:
         explicit Backend(QObject* parent = nullptr);
-        Q_INVOKABLE int generateNumber();
+        Q_INVOKABLE void generateNumber();
 };

@@ -25,11 +25,15 @@ qt_add_executable(kleaner
     main/main.cpp
 )
 
-# generate qml module from executable target
+# add c++ sources to executable target
+target_sources(kleaner PUBLIC
+    backend/backend.cpp
+)
+
+# Bundle qml and js sources with executable target
 qt_add_qml_module(kleaner
     URI io.github.najepaliya.kleaner
     QML_FILES main/Main.qml frontend/pages/Home.qml frontend/components/AbstractView.qml
-    SOURCES backend/backend.hpp backend/backend.cpp
 )
 
 # link required libraries to target

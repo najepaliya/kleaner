@@ -1,6 +1,7 @@
 import org.kde.kirigami as K
 import QtQuick.Layouts as QL
 import "../components"
+import io.github.najepaliya.kleaner
 
 K.Page {
     title: "Home"
@@ -16,7 +17,7 @@ K.Page {
                 {
                     icon: "edit-clear-history",
                     function: () => {
-                        console.log("history cleared")
+                        Backend.generateNumber()
                     }
                 },
                 {
