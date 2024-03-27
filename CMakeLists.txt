@@ -28,6 +28,7 @@ qt_add_executable(kleaner
 # add c++ sources to executable target
 target_sources(kleaner PUBLIC
     backend/backend.cpp
+    backend/file_model.cpp
 )
 
 # Bundle qml and js sources with executable target

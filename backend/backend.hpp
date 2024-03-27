@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QtQml>
-#include <QObject>
+#include "file_model.hpp"
 
 class Backend : public QObject
 {
@@ -9,7 +9,12 @@ class Backend : public QObject
     QML_ELEMENT
     QML_SINGLETON
 
+    Q_PROPERTY(FileModel* fileModel READ fileModel)
+
     public:
         explicit Backend(QObject* parent = nullptr);
-        Q_INVOKABLE void generateNumber();
+        FileModel* fileModel();
+    
+    private:
+        FileModel* m_fileModel;
 };

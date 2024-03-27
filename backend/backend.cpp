@@ -1,10 +1,12 @@
 #include "backend.hpp"
 
-Backend::Backend(QObject* parent) : QObject{parent}
-{
-}
+Backend::Backend(QObject* parent)
+:
+    QObject{parent},
+    m_fileModel(new FileModel(this))
+{}
 
-void Backend::generateNumber()
+FileModel* Backend::fileModel()
 {
-    qDebug() << 2;
+    return this->m_fileModel;
 }

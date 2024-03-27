@@ -17,7 +17,7 @@ K.Page {
                 {
                     icon: "edit-clear-history",
                     function: () => {
-                        Backend.generateNumber()
+                        Backend.fileModel.test()
                     }
                 },
                 {
