@@ -17,18 +17,6 @@ Q.ListView {
     L.Layout.fillHeight: true
     L.Layout.fillWidth: true
 
-    component ButtonRow: Q.Repeater {
-        required property list<var> buttonList
-        
-        model: buttonList.length
-        
-        delegate: C.ToolButton {
-            required property int index
-            icon.name: buttonList[index].icon
-            onClicked: buttonList[index].function()
-        }
-    }
-
     header: C.ToolBar {
         z: 2
         width: parent.width
