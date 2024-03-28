@@ -1,12 +1,11 @@
 #include "backend.hpp"
 
 Backend::Backend(QObject* parent)
-:
-    QObject{parent},
-    m_fileModel(new FileModel(this))
+    : QObject(parent)
+    , m_fileModel(new FileModel())
 {}
 
 FileModel* Backend::fileModel()
 {
-    return this->m_fileModel;
+    return m_fileModel;
 }
