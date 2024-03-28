@@ -13,6 +13,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
 # find packages
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS Kirigami)
 find_package(Qt6 ${QT6_MIN_VERSION} REQUIRED COMPONENTS Widgets)
+find_package(KExiv2Qt6)
 
 # generate required file for LSP
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
