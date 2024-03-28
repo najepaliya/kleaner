@@ -34,7 +34,7 @@ target_sources(kleaner PUBLIC
 # Bundle qml and js sources with executable target
 qt_add_qml_module(kleaner
     URI io.github.najepaliya.kleaner
-    QML_FILES main/Main.qml frontend/home/HomePage.qml frontend/home/AbstractView.qml frontend/home/FileView.qml frontend/home/FileViewUtilities.js frontend/home/TemplateView.qml frontend/home/TemplateViewUtilities.js
+    QML_FILES main/Main.qml frontend/home/HomePage.qml frontend/home/AbstractView.qml frontend/home/FileView.qml frontend/home/FileViewFunctions.js frontend/home/TemplateView.qml frontend/home/TemplateViewFunctions.js
 )
 
 # link required libraries to target

@@ -1,17 +1,15 @@
 import org.kde.kirigami as K
-import QtQuick.Layouts as QL
-import io.github.najepaliya.kleaner
-import QtQuick.Dialogs as D
+import QtQuick.Layouts as L
 
 K.Page {
     title: "Home"
 
-    QL.ColumnLayout {
+    L.ColumnLayout {
         anchors.fill: parent
         spacing: K.Units.gridUnit
 
         FileView {}
-
+        
         TemplateView {}
     }
 }
