@@ -3,63 +3,53 @@ import org.kde.kirigami as K
 import QtQuick.Layouts as L
 import QtQuick as Q
 
-Q.ListView {
+Q.Item {
     id: root
-    
-    required property string viewTitle
-    required property list<var> headerButtonList
-    required property list<var> rowButtonList
+
+    required property string viewHeaderTitle
+    required property list<var> viewHeaderButtonList
     required property var viewModel
-    
+    required property Q.Component viewItemDelegate
+
     property int rowHeight
-    property int index
+    property alias viewList: _viewList
 
     L.Layout.fillHeight: true
     L.Layout.fillWidth: true
 
-    header: C.ToolBar {
-        z: 2
-        width: parent.width
-        horizontalPadding: K.Units.gridUnit
-        
-        Q.Component.onCompleted: () => {
-            rowHeight = height 
-        }
-        
-        L.RowLayout {
-            anchors.fill: parent
-            
-            Q.Text {
-                L.Layout.fillWidth: true
-                text: root.viewTitle
-            }
-            
-            ButtonRow {
-                buttonList: root.headerButtonList
-            }
-        }
-    }
+    Q.ListView {
+        id: _viewList
 
-    headerPositioning: Q.ListView.OverlayHeader
-    clip: true
-    model: root.viewModel
-    
-    delegate: C.ItemDelegate {
-        height: rowHeight
-        width: parent.width
-        
-        L.RowLayout {
-            height: parent.height
-            width: parent.width - 2 * K.Units.gridUnit
-            anchors.horizontalCenter: parent.horizontalCenter
+        property int index
+
+        anchors.fill: root
+        clip: true
+        currentIndex: -1
+        model: root.viewModel
+        delegate: root.viewItemDelegate
+        headerPositioning: Q.ListView.OverlayHeader
+
+        header: C.ToolBar {
+            id: viewHeader
+            z: 2
+            width: root.viewList.width
+            horizontalPadding: K.Units.gridUnit
             
-            Q.Text {
-                text: model.display
-                L.Layout.fillWidth: true
+            Q.Component.onCompleted: () => {
+                root.rowHeight = viewHeader.height
             }
             
-            ButtonRow {
-                buttonList: root.rowButtonList
+            L.RowLayout {
+                anchors.fill: viewHeader.contentItem
+                
+                Q.Text {
+                    L.Layout.fillWidth: true
+                    text: root.viewHeaderTitle
+                }
+                
+                ButtonRow {
+                    buttonList: root.viewHeaderButtonList
+                }
             }
         }
     }

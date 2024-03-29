@@ -7,7 +7,7 @@ const addFiles = () => {
 }
 
 const removeFile = () => {
-    Backend.fileModel.removeFile(index)
+    Backend.fileModel.removeFile(root.viewList.index)
 }
 
 const removeAllFiles = () => {
