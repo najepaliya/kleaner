@@ -10,6 +10,6 @@ K.Page {
 
         FileView {}
         
-        TemplateView {}
+        // TemplateView {}
     }
 }

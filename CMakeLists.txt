@@ -21,23 +21,35 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # enable defauts
 qt_standard_project_setup(REQUIRES ${QT6_MIN_VERSION})
 
-# add executable target
+# frontend main executable target
 qt_add_executable(kleaner
-    main/main.cpp
+    frontend/main.cpp
+)
+qt_add_qml_module(kleaner
+    URI
+        io.github.najepaliya.kleaner
+    VERSION
+        1.0
+    QML_FILES
+        frontend/Main.qml
+        frontend/HomePage.qml
+        frontend/FileView.qml
+        frontend/FileViewFunctions.js
+        frontend/AbstractView.qml
+        frontend/ButtonRow.qml
 )
 
-# add c++ sources to executable target
-target_sources(kleaner PUBLIC
-    backend/backend.cpp
+# backend static library target
+qt_add_qml_module(libkleaner
+STATIC
+URI io.github.najepaliya.kleaner.backend
+VERSION 1.0
+SOURCES
+    backend/main.cpp
     backend/file_model.cpp
 )
+target_include_directories(libkleaner PUBLIC backend)
+target_link_libraries(libkleaner PRIVATE Qt6::Widgets)
 
-# Bundle qml and js sources with executable target
-qt_add_qml_module(kleaner
-    URI io.github.najepaliya.kleaner
-    QML_FILES main/Main.qml frontend/home/HomePage.qml frontend/home/AbstractView.qml frontend/home/FileView.qml frontend/home/FileViewFunctions.js frontend/home/TemplateView.qml frontend/home/TemplateViewFunctions.js frontend/home/ButtonRow.qml
-)
-
-# link required libraries to target
-target_include_directories(kleaner PUBLIC backend)
-target_link_libraries(kleaner PRIVATE Qt6::Widgets)
+# link backend static library target to frontend main executable target
+target_link_libraries(kleaner PRIVATE Qt6::Widgets libkleanerplugin)

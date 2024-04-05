@@ -4,7 +4,7 @@ import "FileViewFunctions.js" as F
 import org.kde.kirigami as K
 import QtQuick.Layouts as L
 import QtQuick as Q
-import io.github.najepaliya.kleaner
+import io.github.najepaliya.kleaner.backend
 
 AbstractView {
     id: root

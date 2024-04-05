@@ -1,5 +1,4 @@
 import org.kde.kirigami as K
-import "../frontend/home"
 
 K.ApplicationWindow {
     height: 960
