@@ -33,10 +33,9 @@ qt_add_qml_module(kleaner
     QML_FILES
         frontend/Main.qml
         frontend/HomePage.qml
-        frontend/FileView.qml
-        frontend/FileViewFunctions.js
         frontend/AbstractView.qml
-        frontend/ButtonRow.qml
+        frontend/file_view/FileView.qml
+        frontend/file_view/FileViewFunctions.js
 )
 
 # backend static library target

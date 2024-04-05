@@ -1,55 +1,60 @@
-import QtQuick.Controls as C
-import org.kde.kirigami as K
-import QtQuick.Layouts as L
 import QtQuick as Q
+import QtQuick.Controls as QC
+import org.kde.kirigami as K
+import QtQuick.Layouts as QL
 
 Q.Item {
     id: root
 
-    required property string viewHeaderTitle
-    required property list<var> viewHeaderButtonList
     required property var viewModel
-    required property Q.Component viewItemDelegate
+    required property Q.Component viewHeaderRow
+    required property Q.Component viewItemRow
 
     property int rowHeight
-    property alias viewList: _viewList
 
-    L.Layout.fillHeight: true
-    L.Layout.fillWidth: true
+    QL.Layout.fillHeight: true
+    QL.Layout.fillWidth: true
 
     Q.ListView {
-        id: _viewList
-
-        property int index
-
+        id: viewList
+        
         anchors.fill: root
         clip: true
         currentIndex: -1
-        model: root.viewModel
-        delegate: root.viewItemDelegate
+        
         headerPositioning: Q.ListView.OverlayHeader
-
-        header: C.ToolBar {
+        header: QC.ToolBar {
             id: viewHeader
+
             z: 2
-            width: root.viewList.width
+            width: viewList.width
             horizontalPadding: K.Units.gridUnit
             
+            Q.Loader {
+                anchors.fill: viewHeader.contentItem
+
+                sourceComponent: root.viewHeaderRow
+            }
+
             Q.Component.onCompleted: () => {
                 root.rowHeight = viewHeader.height
             }
-            
-            L.RowLayout {
-                anchors.fill: viewHeader.contentItem
+        }
+
+        model: root.viewModel
+
+        delegate: QC.ItemDelegate {
+            id: viewItem
+
+            height: root.rowHeight
+            width: viewList.width
+            horizontalPadding: K.Units.gridUnit
+
+            Q.Loader {
+                anchors.fill: viewItem.contentItem
                 
-                Q.Text {
-                    L.Layout.fillWidth: true
-                    text: root.viewHeaderTitle
-                }
-                
-                ButtonRow {
-                    buttonList: root.viewHeaderButtonList
-                }
+                property var viewModel: model
+                sourceComponent: root.viewItemRow
             }
         }
     }
