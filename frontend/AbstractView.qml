@@ -28,10 +28,10 @@ Q.Item {
 
             z: 2
             width: viewList.width
-            horizontalPadding: K.Units.gridUnit
             
             Q.Loader {
-                anchors.fill: viewHeader.contentItem
+                width: viewHeader.width - 2 * K.Units.gridUnit
+                anchors.centerIn: viewHeader.contentItem
 
                 sourceComponent: root.viewHeaderRow
             }
@@ -48,11 +48,11 @@ Q.Item {
 
             height: root.rowHeight
             width: viewList.width
-            horizontalPadding: K.Units.gridUnit
 
             Q.Loader {
-                anchors.fill: viewItem.contentItem
-                
+                width: viewItem.width - 2 * K.Units.gridUnit
+                anchors.centerIn: viewItem.contentItem
+
                 property var viewModel: model
                 sourceComponent: root.viewItemRow
             }
