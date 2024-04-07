@@ -1,6 +1,5 @@
 import org.kde.kirigami as K
 import QtQuick.Layouts as QL
-import "./file_view"
 
 K.Page {
     title: "Home"

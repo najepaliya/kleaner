@@ -28,24 +28,21 @@ qt_add_executable(kleaner
 qt_add_qml_module(kleaner
     URI
         io.github.najepaliya.kleaner
-    VERSION
-        1.0
     QML_FILES
         frontend/Main.qml
         frontend/HomePage.qml
         frontend/AbstractView.qml
-        frontend/file_view/FileView.qml
-        frontend/file_view/FileViewFunctions.js
+        frontend/FileView.qml
 )
 
 # backend static library target
 qt_add_qml_module(libkleaner
-STATIC
-URI io.github.najepaliya.kleaner.backend
-VERSION 1.0
-SOURCES
-    backend/main.cpp
-    backend/file_model.cpp
+    STATIC
+    URI
+        io.github.najepaliya.kleaner.backend
+    SOURCES
+        backend/backend.cpp
+        backend/file_model.cpp
 )
 target_include_directories(libkleaner PUBLIC backend)
 target_link_libraries(libkleaner PRIVATE Qt6::Widgets)

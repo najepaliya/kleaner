@@ -7,7 +7,6 @@ import QtQuick.Dialogs as QD
 import QtQuick.Layouts as QL
 
 import io.github.najepaliya.kleaner.backend
-import "FileViewFunctions.js" as F
 
 AbstractView {
     id: root
@@ -16,7 +15,7 @@ AbstractView {
         id: fileDialog
 
         fileMode: QD.FileDialog.OpenFiles
-        onAccepted: F.addFiles()
+        onAccepted: Backend.fileModel.addFiles(fileDialog.selectedFiles)
     }
     
     viewHeaderRow: QL.RowLayout {
@@ -26,8 +25,13 @@ AbstractView {
         }
 
         QC.ToolButton {
+            icon.name: "edit-clear-history"
+            onClicked: Backend.fileModel.removeAllFiles()
+        }
+
+        QC.ToolButton {
             icon.name: "list-add"
-            onClicked: F.openFileDialog()
+            onClicked: fileDialog.open()
         }
     }
 
@@ -41,6 +45,7 @@ AbstractView {
 
         QC.ToolButton {
             icon.name: "edit-delete"
+            onClicked: Backend.fileModel.removeFile(viewModel.index)
         }
     }
 }

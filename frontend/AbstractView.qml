@@ -54,6 +54,7 @@ Q.Item {
                 anchors.centerIn: viewItem.contentItem
 
                 property var viewModel: model
+
                 sourceComponent: root.viewItemRow
             }
         }
