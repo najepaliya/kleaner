@@ -12,17 +12,20 @@
     <provides>
         <binary>kleaner</binary>
     </provides>
-    <project_group>KDE</project_group>
     <url type="homepage">https://github.com/najepaliya/kleaner</url>
     <url type="bugtracker">https://github.com/najepaliya/kleaner/issues</url>
     <releases>
         <release version="1.0" date="2023-09-30"/>
     </releases>
-    <developer_name>Neel Jepaliya</developer_name>
+    <developer id="io.github.najepaliya">
+        <name>
+            Neel Jepaliya
+        </name>
+    </developer>
     <screenshots>
         <screenshot type="default">
             <caption>Main view of Kleaner</caption>
-            <image type="source" width="630" height="1036">https://raw.githubusercontent.com/najepaliya/kleaner/main/screenshot.png</image>
+            <image type="source" width="630" height="1036">https://raw.githubusercontent.com/najepaliya/kleaner/be41947d84dccd7f5c28366174c6446e13febafb/screenshot.png</image>
         </screenshot>
     </screenshots>
     <content_rating type="oars-1.0"/>
