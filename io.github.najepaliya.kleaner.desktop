@@ -6,4 +6,5 @@ Exec=kleaner
 Icon=io.github.najepaliya.kleaner
 Type=Application
 Terminal=false
-Categories=Qt;KDE;
+Keywords=Qt;KDE;
+Categories=Office;Utility;
